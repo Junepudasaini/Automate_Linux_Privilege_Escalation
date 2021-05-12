@@ -17,9 +17,9 @@ def OS_KERNEL_SCAN():
 		os.system('uname -a')   
 		os.system('cat /etc/os-release')
 		os.system('cat /etc/issue')
-		GOTOMAIN = input("Press ENTER to return to MAIN function.")
+		GOTOMAIN = input("Press ENTER to return to main MENU.")
 		MAIN()
-	
+
 # Applications & Services
 # Scan for services running as root
 def ROOT_SERVICE_SCAN():
@@ -32,7 +32,7 @@ def ROOT_SERVICE_SCAN():
 	else:	
 		print("Applications & Services running as root:")
 		os.system('ps aux | grep root')
-		GOTOMAIN = input("Press ENTER to return to MAIN function.")
+		GOTOMAIN = input("Press ENTER to return to main MENU.")
 		MAIN()
 	
 # Scan for abusable SUID/GUID binaries
@@ -47,7 +47,7 @@ def SUID_GUID_SCAN():
 		os.system('find / -perm -g=s -type f 2>/dev/null')   # SGID (chmod 2000) - run as the group, not the user who started it.
 		print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 		print("")
-		GOTOMAIN = input("Full Scan Succeed!!! Press ENTER to return to MAIN function.")
+		GOTOMAIN = input("Full Scan Succeed!!! Press ENTER to return to main MENU.")
 		MAIN()
 	else:
 		print("***SUID/GUID SCAN***")
@@ -59,12 +59,26 @@ def SUID_GUID_SCAN():
 		os.system('find / -perm -g=s -type f 2>/dev/null')
 		print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 		print("")
-		GOTOMAIN = input("Press ENTER to return to MAIN function.")
+		GOTOMAIN = input("Press ENTER to return to main MENU.")
 		MAIN()
-	
 
 def MAIN():
 	#os.system('clear')  It will clear the screen.
+	# Basic user interface header
+	print(r"""
+       __                        _     
+      / /_  ______  __  ______  (_)  __
+ __  / / / / / __ \/ / / / __ \/ / |/_/
+/ /_/ / /_/ / / / / /_/ / / / / />  <  
+\____/\__,_/_/ /_/\__,_/_/ /_/_/_/|_|  
+                                     """)
+	print("Linux Privilege Escalation Script!!!")
+	print("*----------------*-----------------*")
+	print("\n****************************************************************")
+	print("\n* Copyright of June Pudasaini, 2021                            *")
+	print("\n* https://jununix.pythonanywhere.com                           *")
+	print("\n* https://www.youtube.com/channel/UCIHaN_lWOntk0KxlgF2G-2w     *")
+	print("\n****************************************************************")
 	global clock
 	clock = 0
 	OPTION = input("""
@@ -95,7 +109,6 @@ def MAIN():
 
 	else:
 		WRONG_OPTION = input("Invalid option. Press ENTER to continue.")	
-		MAIN()
-			
+		MAIN()			
 
 MAIN()
